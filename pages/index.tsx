@@ -12,45 +12,53 @@ export default function AnimatedPinDemo() {
       </div>
       <div className="relative z-10 h-auto min-h-screen w-full flex flex-col md:flex-row items-center justify-between px-6 md:px-8 py-10 gap-8 bg-transparent max-[900px]:px-2 max-[600px]:px-1 max-[900px]:gap-4">
         <div className="w-full md:w-1/2 text-center md:text-left max-[900px]:mb-8">
-          <motion.h1
-            className="text-4xl sm:text-6xl md:text-8xl font-semibold leading-tight bg-gradient-to-r from-blue-500 from-10% to-emerald-500 bg-clip-text text-transparent max-[900px]:text-4xl max-[600px]:text-2xl"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.05,
-                },
-              },
-            }}
-          >
-            {"Independent".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                className="inline-block"
-                variants={{
-                  hidden: { opacity: 0, y: 10 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeInOut",
-                  delay: index * 0.05,
-                }}
-              >
-                {char}
-              </motion.span>
-            ))}
-            <br />
-            <motion.span
-              className="block text-black bg-white max-[900px]:text-2xl max-[600px]:text-lg"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 1 }}
-            >
-              Developer
-            </motion.span>
-          </motion.h1>
+         <motion.h1
+  className="text-4xl sm:text-6xl md:text-8xl font-semibold leading-tight bg-gradient-to-r from-blue-500 from-10% to-emerald-500 bg-clip-text text-transparent
+    max-[1200px]:text-6xl
+    max-[900px]:text-4xl
+    max-[600px]:text-2xl
+    max-[430px]:text-xl"
+  initial="hidden"
+  animate="visible"
+  variants={{
+    visible: {
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  }}
+>
+  {"Independent".split("").map((char, index) => (
+    <motion.span
+      key={index}
+      className="inline-block"
+      variants={{
+        hidden: { opacity: 0, y: 10 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{
+        duration: 0.6,
+        ease: "easeInOut",
+        delay: index * 0.05,
+      }}
+    >
+      {char}
+    </motion.span>
+  ))}
+  <br />
+  <motion.span
+    className="block text-black bg-white 
+      max-[1200px]:text-2xl
+      max-[900px]:text-xl
+      max-[600px]:text-lg
+      max-[430px]:text-base"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 1 }}
+  >
+    Developer
+  </motion.span>
+</motion.h1>
           <p className="mt-6 text-base sm:text-lg md:text-xl max-w-xl mx-auto md:mx-0 text-black/80 max-[900px]:text-base max-[600px]:text-sm">
             Hey, I’m <b>Hardik</b> — a <b>creative developer</b> passionate about crafting <b>seamless digital experiences</b>. I build <b>clean, responsive interfaces</b> for <b>web and mobile</b>, blending <b>design and code</b> to make ideas come alive.
           </p>
