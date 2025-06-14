@@ -155,63 +155,69 @@ export default function Pageproject() {
     ];
 
     return (
-        <>
-            <div className="">
-                <div className="bg-white w-full h-[80vh] flex p-20 gap-80 max-[1400px]:gap-32 max-[1100px]:gap-10 max-[900px]:flex-col max-[900px]:h-auto max-[900px]:p-6 max-[900px]:gap-8 max-[600px]:p-2 max-[600px]:gap-4 max-[430px]:flex-col max-[430px]:p-2 max-[430px]:gap-4">
-                    <div className="w-130 h-130 border rounded-[40px] flex-end bg-black max-[900px]:w-full max-[900px]:h-90 max-[600px]:h-60 max-[430px]:w-full max-[430px]:h-40">
-                        <KnotAnimation />
-                    </div>
-                    <div className="flex min-h-screen pt-50 justify-center bg-white max-[900px]:min-h-0 max-[900px]:pt-14 max-[600px]:pt-6 max-[430px]:min-h-0 max-[430px]:pt-4">
-                        <p className="text-lg text-gray-800 max-[900px]:text-base max-[600px]:text-sm max-[430px]:text-xs">
-                            Hover for my socials:{" "}
-                            <HoverPeek url="https://github.com/creepolite">
-                                <a
-                                    href="https://github.com/creepolite"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="font-medium text-blue-600 text-[3vh] underline decoration-blue-400 decoration-dotted hover:text-blue-800 hover:decoration-blue-600 hover:decoration-solid gap-2 max-[900px]:text-base max-[600px]:text-sm max-[430px]:text-xs"
-                                >
-                                    GitHub
-                                </a>
-                            </HoverPeek>
-                            <HoverPeek url="https://www.linkedin.com/in/hardik-jain-25518126a/">
-                                <a
-                                    href="https://www.linkedin.com/in/hardik-jain-25518126a/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="font-medium text-blue-600 text-[3vh] underline decoration-blue-400 decoration-dotted hover:text-blue-800 hover:decoration-blue-600 hover:decoration-solid ml-2 max-[900px]:text-base max-[600px]:text-sm max-[430px]:text-xs"
-                                >
-                                    LinkedIn
-                                </a>
-                            </HoverPeek>
-                        </p>
-                    </div>
-                </div>
+  
 
-                <div className="min-h-auto w-full relative max-[430px]:min-h-auto max-[430px]:w-auto">
-                    <div className="absolute top-0 left-0 w-full max-[430px]:w-auto">
-                        <Timeline data={data} />
-                    </div>
+    <>
+        <div className="">
+           <div>
+            <div className="bg-white w-full h-[80vh] flex items-center justify-center p-20 gap-80 max-[1400px]:gap-32 max-[1100px]:gap-10 max-[900px]:flex-col max-[900px]:h-auto max-[900px]:p-6 max-[900px]:gap-8 max-[900px]:items-start max-[900px]:justify-start max-[600px]:p-2 max-[600px]:gap-4 max-[430px]:flex-col max-[430px]:p-1 max-[430px]:gap-2 max-[430px]:items-start max-[430px]:justify-start">
+                <div className="w-130 h-130 border rounded-[40px] flex items-center justify-center bg-black max-[1400px]:w-[400px] max-[1400px]:h-[400px] max-[1400px]:p-6 max-[1100px]:w-[300px] max-[1100px]:h-[300px] max-[1100px]:p-4 max-[900px]:w-full max-[900px]:h-[220px] max-[900px]:p-3 max-[600px]:h-[140px] max-[600px]:p-2 max-[430px]:w-full max-[430px]:h-[100px] max-[430px]:p-1">
+                    <KnotAnimation />
                 </div>
-
-                <style jsx global>{`
-                  @media (max-width: 900px) {
-                    .hydrated {
-                      width: 100% !important;
-                    }
-                  }
-                  @media (max-width: 600px) {
-                    .hydrated {
-                      width: 100% !important;
-                    }
-                  }
-                  @media (max-width: 430px) {
-                    .hydrated {
-                      width: auto !important;
-                    }
-                  }
-                `}</style>
+                <div className="flex min-h-screen pt-50 justify-center items-center bg-white max-[900px]:min-h-0 max-[900px]:pt-14 max-[900px]:items-start max-[900px]:justify-start max-[600px]:pt-6 max-[430px]:min-h-0 max-[430px]:pt-4 max-[430px]:items-start max-[430px]:justify-start">
+                    <p className="text-lg text-gray-800 text-left max-[900px]:text-base max-[900px]:text-left max-[600px]:text-sm max-[430px]:text-xs max-[430px]:text-left">
+                        Hover for my socials:{" "}
+                        <HoverPeek url="https://github.com/creepolite">
+                            <a
+                                href="https://github.com/creepolite"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-medium text-blue-600 text-[3vh] underline decoration-blue-400 decoration-dotted hover:text-blue-800 hover:decoration-blue-600 hover:decoration-solid gap-2 max-[900px]:text-base max-[600px]:text-sm max-[430px]:text-xs"
+                            >
+                                GitHub
+                            </a>
+                        </HoverPeek>
+                        <HoverPeek url="https://www.linkedin.com/in/hardik-jain-25518126a/">
+                            <a
+                                href="https://www.linkedin.com/in/hardik-jain-25518126a/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-medium text-blue-600 text-[3vh] underline decoration-blue-400 decoration-dotted hover:text-blue-800 hover:decoration-blue-600 hover:decoration-solid ml-2 max-[900px]:text-base max-[600px]:text-sm max-[430px]:text-xs"
+                            >
+                                LinkedIn
+                            </a>
+                        </HoverPeek>
+                    </p>
+                </div>
             </div>
-        </>
+
+            <div className="min-h-auto w-full relative max-[430px]:min-h-auto max-[430px]:w-auto">
+                <div className="absolute top-0 left-0 w-full max-[430px]:w-auto">
+                    <Timeline data={data} />
+                </div>
+            </div>
+
+            <style jsx global>{`
+              @media (max-width: 900px) {
+                .hydrated {
+                  width: 100% !important;
+                }
+              }
+              @media (max-width: 600px) {
+                .hydrated {
+                  width: 100% !important;
+                }
+              }
+              @media (max-width: 430px) {
+                .hydrated {
+                  width: auto !important;
+                }
+              }
+            `}</style>
+        </div>
+        </div>
+    </>
+
+
     )
 }

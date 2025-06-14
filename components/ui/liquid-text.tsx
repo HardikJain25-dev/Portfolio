@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-
 import { cn } from "@/lib/utils";
 
 const morphTime = 1.5;
@@ -127,10 +126,16 @@ const SvgFilters: React.FC = () => (
 );
 
 const MorphingText: React.FC<MorphingTextProps> = ({ texts, className }) => (
- <div
+  <div
     className={cn(
-      // Responsive text size and height for smaller screens
-      "relative mx-auto h-16 w-full max-w-screen-md font-sans text-[20pt] leading-none [filter:url(#threshold)_blur(0.6px)] md:h-24 lg:text-[5rem] max-[600px]:text-[1.2rem] max-[600px]:h-10 max-[600px]:px-4",
+      // Responsive text size, alignment, and padding for all screens
+      "relative mx-auto flex items-center justify-center text-center " +
+      "px-8 py-8 h-20 w-full max-w-screen-lg font-sans text-[2rem] leading-tight [filter:url(#threshold)_blur(0.6px)] " +
+      "md:h-28 md:text-[2.5rem] md:px-10 md:py-10 " +
+      "lg:text-[4rem] lg:h-32 lg:px-16 lg:py-12 " +
+      "max-[900px]:text-[1.5rem] max-[900px]:h-14 max-[900px]:px-4 max-[900px]:py-6 " +
+      "max-[600px]:text-[1.1rem] max-[600px]:h-10 max-[600px]:px-2 max-[600px]:py-4 " +
+      "max-[430px]:text-[0.9rem] max-[430px]:h-8 max-[430px]:px-1 max-[430px]:py-2",
       className,
     )}
   >
@@ -139,4 +144,4 @@ const MorphingText: React.FC<MorphingTextProps> = ({ texts, className }) => (
   </div>
 );
 
-export {MorphingText};
+export { MorphingText };

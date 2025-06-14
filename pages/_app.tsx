@@ -6,6 +6,7 @@ import Projects from "./projects";
 import Services from "./Services";
 import Footer from "./footer";
 import Pageproject from "./pageproject";
+import Head from "next/head";
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -13,6 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+    <Head>
+        <link rel="icon" href="/blocks/profilephoto.jpg" />
+        <title>Hardik Jain | Portfolio</title>
+      </Head>
       <Navbar />
       {router.pathname === "/" ? (
         <>

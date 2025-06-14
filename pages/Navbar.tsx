@@ -23,7 +23,7 @@ function NavbarContent({ className }: { className?: string }) {
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="About">
           <div className="flex flex-col space-y-4 text-sm hover:underline max-[600px]:space-y-2">
-            <HoveredLink href="/about">Guess What I'm a developer🤓</HoveredLink>
+            <HoveredLink href="/about">Guess What? I'm a developer🤓</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Projects">

@@ -2,29 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 
-/**
- * KnotAnimation
- *
- * - Animated ASCII trefoil knot with optional colored tube segments.
- * - Pass the prop `color={true}` to enable color; default is grayscale.
- * - Pass the props `speedA` and `speedB` to control the spin speed (optional).
- *
- * Props:
- *   - color?: boolean (default: false) — enable colored tube segments
- *   - speedA?: number (default: 0.04) — rotation speed around the X axis (radians per frame)
- *   - speedB?: number (default: 0.02) — rotation speed around the Y axis (radians per frame)
- *
- * Tweak the COLOR_PALETTE array to change the color scheme.
- */
-
 const W = 80;
 const H = 40;
 const PI = 3.14159265;
 
-// ASCII brightness ramp
 const ramp = ".,-~:;=!*#$@";
 
-// Color palette for tube segments (edit as desired)
 const COLOR_PALETTE = [
   "#e53935", // red
   "#43a047", // green
@@ -53,8 +36,8 @@ const cross = (a: Vec3, b: Vec3): Vec3 => ({
 
 export const KnotAnimation = ({
   color = false,
-  speedA = 0.04,
-  speedB = 0.02
+  speedA = 0.01,
+  speedB = 0.002
 }: {
   color?: boolean;
   speedA?: number;
@@ -65,7 +48,8 @@ export const KnotAnimation = ({
   const [B, setB] = useState(0);
 
   useEffect(() => {
-    const renderFrame = () => {
+    let raf: number;
+    function renderFrame() {
       // Buffers for ASCII and color index
       const screen: string[] = Array(W * H).fill(' ');
       const colorIdx: number[] = Array(W * H).fill(-1);
@@ -161,29 +145,48 @@ export const KnotAnimation = ({
         frameLines.push(<div key={y}>{line}</div>);
       }
       setFrame(frameLines);
-    };
+    }
 
-    const interval = setInterval(() => {
+    let running = true;
+    function animate() {
+      if (!running) return;
       setA(prev => prev + speedA);
       setB(prev => prev + speedB);
       renderFrame();
-    }, 30);
-
-    return () => clearInterval(interval);
+      requestAnimationFrame(animate);
+    }
+    animate();
+    return () => { running = false; };
   }, [A, B, color, speedA, speedB]);
 
   return (
-     <pre
+    <div
       className="
-        font-mono text-xs whitespace-pre leading-none text-center
-        max-[430px]:text-[7px] max-[430px]:leading-[8px] max-[430px]:overflow-x-auto
+        w-full h-full flex items-center justify-center
+        overflow-x-auto
+        p-8
+        max-[1200px]:p-6
+        max-[900px]:h-[180px] max-[900px]:p-4
+        max-[600px]:h-[100px] max-[600px]:p-2
+        max-[430px]:h-[60px] max-[430px]:p-1
       "
-      style={{
-        maxWidth: "100%",
-        display: "block",
-      }}
+      style={{ minWidth: 0 }}
     >
-      {frame}
-    </pre>
+      <pre
+        className="
+          font-mono text-xs whitespace-pre leading-none text-center
+          max-[900px]:text-[9px] max-[900px]:leading-[10px]
+          max-[600px]:text-[7px] max-[600px]:leading-[8px]
+          max-[430px]:text-[5px] max-[430px]:leading-[6px]
+          max-w-full block
+        "
+        style={{
+          maxWidth: "100%",
+          display: "block",
+        }}
+      >
+        {frame}
+      </pre>
+    </div>
   );
-}; 
+};
