@@ -1,146 +1,249 @@
 "use client";
+import DomeGallery from "@/components/DomeGallery";
+import BubbleMenu from "@/components/ui/BubbleMenu";
 import React from "react";
-import { PinContainer } from "../components/ui/3d-pin";
-import { motion } from "framer-motion";
-import { BackgroundBeamsDemo } from "../components/ui/BackgroundBeamsDemo";
+import FlowingMenu from "../components/ui/FlowingMenu";
+import PixelCard from "@/components/PixelCard";
+import { SpotlightCard } from "../components/ui/spotlight-card";
+import PrismaticBurst from "@/components/PrismaticBurst";
 
-export default function AnimatedPinDemo() {
-  return (
-    <div className="relative min-h-screen w-full overflow-x-hidden px-4 sm:px-6 md:px-8">
-      <div className="absolute inset-0 z-0">
-        <BackgroundBeamsDemo />
-      </div>
-      <div className="relative z-10 h-auto min-h-screen w-full flex flex-col md:flex-row items-center justify-between px-6 md:px-8 py-10 gap-8 bg-transparent max-[900px]:px-2 max-[600px]:px-1 max-[900px]:gap-4">
-        <div className="w-full md:w-1/2 text-center md:text-left max-[900px]:mb-8">
-         <motion.h1
-  className="text-4xl sm:text-6xl md:text-8xl font-semibold leading-tight bg-gradient-to-r from-blue-500 from-10% to-emerald-500 bg-clip-text text-transparent
-    max-[1200px]:text-6xl
-    max-[900px]:text-4xl
-    max-[600px]:text-2xl
-    max-[430px]:text-xl"
-  initial="hidden"
-  animate="visible"
-  variants={{
-    visible: {
-      transition: {
-        staggerChildren: 0.05,
-      },
+export default function PortfolioOnePage() {
+  const items = [
+    {
+      label: "home",
+      href: "#home",
+      ariaLabel: "Home",
+      rotation: -8,
+      hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
     },
-  }}
->
-  {"Independent".split("").map((char, index) => (
-    <motion.span
-      key={index}
-      className="inline-block"
-      variants={{
-        hidden: { opacity: 0, y: 10 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      transition={{
-        duration: 0.6,
-        ease: "easeInOut",
-        delay: index * 0.05,
-      }}
-    >
-      {char}
-    </motion.span>
-  ))}
-  <br />
-  <motion.span
-    className="block text-black bg-white 
-      max-[1200px]:text-2xl
-      max-[900px]:text-xl
-      max-[600px]:text-lg
-      max-[430px]:text-base"
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: "easeOut", delay: 1 }}
-  >
-    Developer
-  </motion.span>
-</motion.h1>
-          <p className="mt-6 text-base sm:text-lg md:text-xl max-w-xl mx-auto md:mx-0 text-black/80 max-[900px]:text-base max-[600px]:text-sm">
-            Hey, I’m <b>Hardik</b> — a <b>creative developer</b> passionate about crafting <b>seamless digital experiences</b>. I build <b>clean, responsive interfaces</b> for <b>web and mobile</b>, blending <b>design and code</b> to make ideas come alive.
-          </p>
+    {
+      label: "about",
+      href: "#about",
+      ariaLabel: "About",
+      rotation: 8,
+      hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
+    },
+    {
+      label: "projects",
+      href: "#projects",
+      ariaLabel: "Projects",
+      rotation: 8,
+      hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
+    },
+    {
+      label: "contact",
+      href: "#contact",
+      ariaLabel: "Contact",
+      rotation: -8,
+      hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+    },
+  ];
+
+  const demoItems = [
+    {
+      link: "https://enactusslc.com/",
+      text: "Enactus Website",
+      image: "https://picsum.photos/600/400?random=1",
+    },
+    {
+      link: "https://github.com/HardikJain25-dev/fintech-clone",
+      text: "FinTech",
+      image: "https://picsum.photos/600/400?random=2",
+    },
+    {
+      link: "https://github.com/HardikJain25-dev/notevault",
+      text: "Notevault",
+      image: "https://picsum.photos/600/400?random=3",
+    },
+    {
+      link: "https://github.com/HardikJain25-dev/creepolite",
+      text: "GitHub",
+      image: "https://picsum.photos/600/400?random=4",
+    },
+  ];
+
+  return (
+    <main className="w-full min-h-screen bg-background" style={{ scrollBehavior: "smooth" }}>
+      <BubbleMenu
+        logo={
+          <span style={{ fontWeight: 700, color: "black" }}>It's Hardik</span>
+        }
+        items={items}
+        menuAriaLabel="Toggle navigation"
+        menuBg="#ffffff"
+        menuContentColor="#111111"
+        useFixedPosition={true}
+        animationEase="back.out(1.5)"
+        animationDuration={0.5}
+        staggerDelay={0.12}
+      />
+      
+      {/* Hero Section */}
+      <div
+        id="home"
+        className="w-screen h-screen max-w-full overflow-hidden"
+        style={{ height: "100vh" }}
+      >
+        <DomeGallery />
+      </div>
+
+      {/* Projects Section */}
+      <div 
+        id="projects" 
+        className="h-[400px] sm:h-[500px] md:h-[600px] relative"
+      >
+        <FlowingMenu items={demoItems} />
+      </div>
+      
+      {/* About Section */}
+      <div
+        id="about"
+        className="pt-8 px-4 pb-8 sm:pt-12 sm:px-6 md:pt-20 md:px-12 lg:pt-25 lg:pl-60 lg:pb-25 flex flex-col lg:flex-row justify-center lg:justify-between items-center lg:items-start gap-6 sm:gap-8 lg:gap-40"
+      >
+        {/* Profile Image Card */}
+        <div className="w-full max-w-xs sm:max-w-sm lg:max-w-none lg:w-auto flex-shrink-0">
+          <PixelCard variant="yellow" className="w-full h-64 sm:h-72 md:h-80 lg:h-96">
+            <img 
+              className="absolute w-full h-full z-[-1] object-cover" 
+              src="/blocks/me.jpg" 
+              alt="Profile picture" 
+            />
+          </PixelCard>
         </div>
 
-        <div className="w-full md:w-1/2 flex justify-center items-center gap-6 max-[900px]:w-full max-[900px]:mt-4">
-          <PinContainer title="Have A Look" href="https://github.com/creepolite">
-            <div className="flex flex-col p-4 tracking-tight text-slate-100/50 w-[20rem] h-[20rem] bg-gradient-to-b from-slate-800/50 to-slate-800/0 backdrop-blur-sm border border-slate-700/50 rounded-2xl max-[600px]:w-full max-[600px]:h-[16rem]">
-              <div className="flex items-center gap-2">
-                <div className="size-3 rounded-full bg-red-500 animate-pulse" />
-                <div className="text-xs text-slate-400">
-                  <h3 className="font-bold text-base text-slate-100">
-                    Let’s Build Together
-                  </h3>
-                </div>
-              </div>
+        {/* About Me Card */}
+        <SpotlightCard
+          className="custom-spotlight-card w-full max-w-md lg:max-w-lg xl:w-150 xl:h-100 relative p-4 sm:p-6 flex flex-col justify-center gap-3 sm:gap-4 bg-gradient-to-br from-black/70 to-black/50 rounded-lg shadow-lg"
+          spotlightColor="rgba(0, 229, 255, 0.2)"
+        >
+          <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+            About Me
+          </h2>
+          <p className="text-white text-xs sm:text-sm leading-relaxed">
+            Hi! I'm Hardik Jain, a passionate <strong>Web Developer & Designer</strong> with a love for creating interactive and visually stunning web experiences. I enjoy turning ideas into beautiful, functional websites.
+          </p>
 
-              <div className="flex-1 mt-4 space-y-4">
-                <div className="text-2xl font-bold text-slate-100"></div>
-                <div className="grid grid-cols-2 gap-4 mb-0.5 max-[600px]:gap-2">
-                  <div className="space-y-1">
-                    <div className="text-3xl font-bold text-sky-400 max-[600px]:text-xl">20+</div>
-                    <div className="text-xs text-slate-400 max-[600px]:text-[10px]">Projects Completed</div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-3xl font-bold text-emerald-400 max-[600px]:text-xl">2</div>
-                    <div className="text-xs text-slate-400 max-[600px]:text-[10px]">Years of Experience</div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-3xl font-bold text-purple-400 max-[600px]:text-xl">100%</div>
-                    <div className="text-xs text-slate-400 max-[600px]:text-[10px]">Focused</div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-3xl font-bold text-yellow-400 max-[600px]:text-xl">∞</div>
-                    <div className="text-xs text-slate-400 max-[600px]:text-[10px]">Learning Every Day</div>
-                  </div>
-                </div>
+          <ul className="text-white text-xs sm:text-sm flex flex-col gap-2 mt-2">
+            <li className="flex items-start sm:items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 mt-0.5 sm:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-3 0-5 3-5 5s2 5 5 5 5-2 5-5-2-5-5-5z" />
+              </svg>
+              <span>Experienced in React, Next.js, and JavaScript</span>
+            </li>
+            <li className="flex items-start sm:items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 mt-0.5 sm:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              <span>Skilled in UI/UX design and creative layouts</span>
+            </li>
+            <li className="flex items-start sm:items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 mt-0.5 sm:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m0-4h1v4h1m-6 4h.01M18 8h.01M6 12h.01M18 16h.01M6 8h.01" />
+              </svg>
+              <span>Always learning new technologies and frameworks</span>
+            </li>
+            <li className="flex items-start sm:items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 mt-0.5 sm:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 108 0 4 4 0 10-8 0zm0 6a8 8 0 1116 0H3z" />
+              </svg>
+              <span>Hobbyist in photography and digital art</span>
+            </li>
+          </ul>
+        </SpotlightCard>
+      </div>
 
-                <div className="relative h-20 overflow-hidden max-[600px]:h-12">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="absolute w-full h-20 max-[600px]:h-12"
-                      style={{
-                        background: `linear-gradient(180deg, transparent 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%)`,
-                        animation: `wave ${2 + i * 0.5}s ease-in-out infinite`,
-                        opacity: 0.3 / i,
-                        transform: `translateY(${i * 10}px)`,
-                      }}
-                    />
-                  ))}
-                </div>
+      {/* Skills & Services Section */}
+      <div className="mt-12 sm:mt-16 md:mt-20 px-4 sm:px-6 md:px-12 lg:px-40 pb-8 sm:pb-12 md:pb-20 lg:pb-25">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-white mb-8 sm:mb-10 md:mb-12">
+          Skills & Services
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-cyan-400/40 transition-transform transform hover:-translate-y-2">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12H8m0 0l4-4m-4 4l4 4" />
+              </svg>
+              <span>Full Stack Web Development and Automations</span>
+            </h3>
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
+              Building modern, responsive, and scalable web apps using React, Next.js, and Node.js. Automating workflows to boost efficiency.
+            </p>
+          </div> 
 
-                <div className="flex justify-between items-end">
-                  <div className="text-xs text-slate-400 flex items-center gap-2 max-[600px]:text-[10px]">
-                    <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                    Online
-                  </div>
-                  <a
-                    href="/blocks/Resume1.pdf"
-                    download
-                    className="text-sky-400 text-sm font-medium hover:underline hover:text-sky-300 transition max-[600px]:text-xs"
-                  >
-                    Download Resume→
-                  </a>
-                </div>
-              </div>
-            </div>
-          </PinContainer>
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-cyan-400/40 transition-transform transform hover:-translate-y-2">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              <span>UI/UX Design</span>
+            </h3>
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
+              Designing creative, user-friendly, and aesthetic interfaces for a seamless experience.
+            </p>
+          </div>
 
-          <style jsx>{`
-            @keyframes wave {
-              0%, 100% {
-                transform: translateY(0);
-              }
-              50% {
-                transform: translateY(-10px);
-              }
-            }
-          `}</style>
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-cyan-400/40 transition-transform transform hover:-translate-y-2">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V7a2 2 0 00-2-2h-6M4 7v6m0 0v6a2 2 0 002 2h6" />
+              </svg>
+              <span>Mobile-Friendly Apps</span>
+            </h3>
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
+              Creating responsive and mobile-first designs for smooth usage across all devices.
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-cyan-400/40 transition-transform transform hover:-translate-y-2">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v8m-4-4h8" />
+              </svg>
+              <span>Services</span>
+            </h3>
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
+              Offering end-to-end solutions including deployment, optimization, and ongoing support.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Contact Section */}
+      <div id="contact" className="mt-16 sm:mt-20 md:mt-32 px-4 sm:px-6 md:px-12 lg:px-20 pb-12 sm:pb-16 md:pb-24 lg:pb-32">
+        <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] relative">
+          <PrismaticBurst
+            animationType="rotate3d"
+            intensity={2}
+            speed={0.5}
+            distort={0}
+            paused={false}
+            offset={{ x: 0, y: 0 }}
+            hoverDampness={0.65}
+            rayCount={0}
+            mixBlendMode="lighten"
+            colors={['#ffffffff', '#000000ff', '#ffffffff']}
+          />
+          <div className="absolute inset-0 flex flex-col justify-center items-center p-4 sm:p-6 md:p-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-center text-white mb-4 sm:mb-6 px-2">
+              Let's Connect & Create Together!
+            </h2>
+            <p className="text-center text-gray-300 mb-6 sm:mb-8 md:mb-12 text-xs sm:text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed px-2">
+              I'm always excited to collaborate on new projects and bring ideas to life. Whether you have a concept in mind or need help brainstorming, let's connect and create something amazing together!
+            </p>
+            <div className="flex justify-center">
+              <a
+                href="mailto:hardiksurana2505@gmail.com"
+                className="bg-cyan-400 text-gray-900 font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-sm sm:text-base"
+              >
+                Get in Touch
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
