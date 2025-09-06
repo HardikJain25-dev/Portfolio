@@ -2,10 +2,10 @@
 import DomeGallery from "@/components/DomeGallery";
 import BubbleMenu from "@/components/ui/BubbleMenu";
 import React from "react";
-import FlowingMenu from "../components/ui/FlowingMenu";
 import PixelCard from "@/components/PixelCard";
-import { SpotlightCard } from "../components/ui/spotlight-card";
 import PrismaticBurst from "@/components/PrismaticBurst";
+import FlowingMenu from "@/components/FlowingMenu";
+import SpotlightCard from "@/components/SpotlightCard";
 
 export default function PortfolioOnePage() {
   const items = [
